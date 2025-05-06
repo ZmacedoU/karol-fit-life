@@ -3,6 +3,7 @@ import React from "react";
 import BottomNav from "@/components/navigation/BottomNav";
 import ActivityProgress from "@/components/dashboard/ActivityProgress";
 import StatisticsChart from "@/components/dashboard/StatisticsChart";
+import WaterConsumptionTracker from "@/components/dashboard/WaterConsumptionTracker";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Dashboard: React.FC = () => {
@@ -103,7 +104,7 @@ const Dashboard: React.FC = () => {
         </div>
 
         {/* Charts Section - Enhanced spacing */}
-        <div className="mt-6">
+        <div>
           <Tabs defaultValue="calories" className="w-full">
             <TabsList className="grid w-full grid-cols-4 mb-4 h-10">
               <TabsTrigger value="calories" className="text-sm">Calorias</TabsTrigger>
@@ -149,6 +150,9 @@ const Dashboard: React.FC = () => {
             </TabsContent>
           </Tabs>
         </div>
+        
+        {/* Water Consumption Tracker */}
+        <WaterConsumptionTracker initialValue={1.2} dailyGoal={3.0} />
       </div>
 
       <BottomNav />
