@@ -88,23 +88,23 @@ const Dashboard: React.FC = () => {
 
   return (
     <div className="pb-20 animate-fade-in">
-      {/* Header */}
-      <div className="px-5 pt-8 pb-5 bg-card">
+      {/* Compact Header */}
+      <div className="px-5 py-4 bg-card">
         <div className="flex justify-between items-center">
           <div>
-            <h1 className="text-2xl font-bold">{getGreeting()}, João</h1>
-            <p className="text-muted-foreground text-sm">Quarta-feira, 6 de Maio</p>
+            <h1 className="text-xl font-bold">{getGreeting()}, João</h1>
+            <p className="text-muted-foreground text-xs">Quarta-feira, 6 de Maio</p>
           </div>
-          <div className="h-10 w-10 bg-fitness-purple rounded-full flex items-center justify-center">
+          <div className="h-9 w-9 bg-fitness-purple rounded-full flex items-center justify-center">
             <span className="text-white text-sm font-bold">JP</span>
           </div>
         </div>
       </div>
 
       {/* Content */}
-      <div className="px-5 space-y-6 mt-4">
-        {/* Progress Cards */}
-        <div className="grid grid-cols-2 gap-4">
+      <div className="px-4 space-y-5 mt-3">
+        {/* Progress Summary - 2x2 grid with smaller cards */}
+        <div className="grid grid-cols-2 gap-3">
           <ActivityProgress 
             title="Calorias" 
             current={1250} 
@@ -135,14 +135,14 @@ const Dashboard: React.FC = () => {
           />
         </div>
 
-        {/* Charts Section */}
-        <div className="mt-6">
+        {/* Charts Section - Compact version */}
+        <div className="mt-4">
           <Tabs defaultValue="calories" className="w-full">
-            <TabsList className="grid w-full grid-cols-4 mb-6">
-              <TabsTrigger value="calories">Calorias</TabsTrigger>
-              <TabsTrigger value="protein">Proteína</TabsTrigger>
-              <TabsTrigger value="weight">Peso</TabsTrigger>
-              <TabsTrigger value="workouts">Treinos</TabsTrigger>
+            <TabsList className="grid w-full grid-cols-4 mb-2 h-8">
+              <TabsTrigger value="calories" className="text-xs px-1">Calorias</TabsTrigger>
+              <TabsTrigger value="protein" className="text-xs px-1">Proteína</TabsTrigger>
+              <TabsTrigger value="weight" className="text-xs px-1">Peso</TabsTrigger>
+              <TabsTrigger value="workouts" className="text-xs px-1">Treinos</TabsTrigger>
             </TabsList>
             
             <TabsContent value="calories" className="mt-0">
@@ -183,44 +183,47 @@ const Dashboard: React.FC = () => {
           </Tabs>
         </div>
 
-        {/* Workout Section */}
-        <div>
-          <div className="flex items-center mb-3">
-            <Activity className="h-5 w-5 mr-2 text-fitness-purple" />
-            <h2 className="text-lg font-semibold">Seus treinos</h2>
-            <a href="/workout" className="ml-auto text-sm text-fitness-purple">Ver todos</a>
+        {/* Compact Sections */}
+        <div className="flex flex-col space-y-4">
+          {/* Workout Section */}
+          <div>
+            <div className="flex items-center mb-2">
+              <Activity className="h-4 w-4 mr-1 text-fitness-purple" />
+              <h2 className="text-base font-semibold">Seus treinos</h2>
+              <a href="/workout" className="ml-auto text-xs text-fitness-purple">Ver todos</a>
+            </div>
+            <div className="space-y-2">
+              {workouts.map((workout, index) => (
+                <WorkoutCard
+                  key={index}
+                  title={workout.title}
+                  time={workout.time}
+                  exercises={workout.exercises}
+                  isToday={workout.isToday}
+                />
+              ))}
+            </div>
           </div>
-          <div className="space-y-3">
-            {workouts.map((workout, index) => (
-              <WorkoutCard
-                key={index}
-                title={workout.title}
-                time={workout.time}
-                exercises={workout.exercises}
-                isToday={workout.isToday}
-              />
-            ))}
-          </div>
-        </div>
 
-        {/* Meals Section */}
-        <div>
-          <div className="flex items-center mb-3">
-            <CalendarDays className="h-5 w-5 mr-2 text-fitness-purple" />
-            <h2 className="text-lg font-semibold">Refeições do dia</h2>
-            <a href="/diet" className="ml-auto text-sm text-fitness-purple">Ver todas</a>
-          </div>
-          <div className="space-y-3">
-            {meals.map((meal, index) => (
-              <MealCard
-                key={index}
-                type={meal.type}
-                time={meal.time}
-                calories={meal.calories}
-                completed={meal.completed}
-                foods={meal.foods}
-              />
-            ))}
+          {/* Meals Section */}
+          <div>
+            <div className="flex items-center mb-2">
+              <CalendarDays className="h-4 w-4 mr-1 text-fitness-purple" />
+              <h2 className="text-base font-semibold">Refeições do dia</h2>
+              <a href="/diet" className="ml-auto text-xs text-fitness-purple">Ver todas</a>
+            </div>
+            <div className="space-y-2">
+              {meals.map((meal, index) => (
+                <MealCard
+                  key={index}
+                  type={meal.type}
+                  time={meal.time}
+                  calories={meal.calories}
+                  completed={meal.completed}
+                  foods={meal.foods}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>

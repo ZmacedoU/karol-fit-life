@@ -18,19 +18,19 @@ const WorkoutCard: React.FC<WorkoutCardProps> = ({
   isToday = false,
 }) => {
   return (
-    <Card className={`p-4 ${isToday ? 'border-l-4 border-l-fitness-purple' : ''}`}>
+    <Card className={`p-3 ${isToday ? 'border-l-4 border-l-fitness-purple' : ''}`}>
       <div className="flex justify-between items-start">
         <div>
-          <h3 className="font-medium text-lg">{title}</h3>
-          <div className="flex items-center text-sm text-muted-foreground mt-1">
-            <Calendar className="h-4 w-4 mr-1" />
+          <h3 className="font-medium text-base">{title}</h3>
+          <div className="flex items-center text-xs text-muted-foreground mt-0.5">
+            <Calendar className="h-3 w-3 mr-1" />
             <span>{time} • {exercises} exercícios</span>
           </div>
         </div>
         <Button 
           variant={isToday ? "default" : "outline"} 
           size="sm" 
-          className={isToday ? "h-8 bg-fitness-purple hover:bg-fitness-darkPurple" : "h-8"}
+          className={isToday ? "h-7 py-0 bg-fitness-purple hover:bg-fitness-darkPurple text-xs" : "h-7 py-0 text-xs"}
         >
           {isToday ? "Iniciar" : "Ver"}
         </Button>

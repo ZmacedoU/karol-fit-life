@@ -31,9 +31,9 @@ const StatisticsChart: React.FC<StatisticsChartProps> = ({
   };
 
   return (
-    <Card className="fitness-card">
-      <h3 className="font-semibold text-lg mb-3">{title}</h3>
-      <div className="h-[180px]">
+    <Card className="p-3">
+      <h3 className="font-semibold text-base mb-2">{title}</h3>
+      <div className="h-[160px]">
         <ChartContainer config={chartConfig} className="h-full">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={data} margin={{ top: 5, right: 5, left: 0, bottom: 5 }}>
@@ -46,12 +46,12 @@ const StatisticsChart: React.FC<StatisticsChartProps> = ({
               <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
               <XAxis 
                 dataKey="name" 
-                tick={{ fill: 'var(--muted-foreground)' }}
+                tick={{ fill: 'var(--muted-foreground)', fontSize: 10 }}
                 tickLine={{ stroke: 'var(--muted-foreground)' }}
                 axisLine={{ stroke: 'var(--muted-foreground)' }}
               />
               <YAxis 
-                tick={{ fill: 'var(--muted-foreground)' }}
+                tick={{ fill: 'var(--muted-foreground)', fontSize: 10 }}
                 tickLine={{ stroke: 'var(--muted-foreground)' }}
                 axisLine={{ stroke: 'var(--muted-foreground)' }}
                 tickFormatter={valueFormatter}
@@ -82,9 +82,9 @@ interface CustomTooltipProps {
 const CustomTooltip = ({ active, payload, label, valueFormatter }: CustomTooltipProps) => {
   if (active && payload && payload.length) {
     return (
-      <div className="glass-morphism p-2 rounded-md">
-        <p className="text-sm font-medium">{`${label}`}</p>
-        <p className="text-sm text-fitness-purple">
+      <div className="glass-morphism p-1.5 rounded-md">
+        <p className="text-xs font-medium">{`${label}`}</p>
+        <p className="text-xs text-fitness-purple">
           {valueFormatter ? valueFormatter(payload[0].value) : payload[0].value}
         </p>
       </div>

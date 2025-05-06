@@ -18,24 +18,24 @@ const MealCard: React.FC<MealCardProps> = ({
   foods,
 }) => {
   return (
-    <Card className="p-4">
-      <div className="flex justify-between items-start mb-3">
+    <Card className="p-3">
+      <div className="flex justify-between items-start mb-2">
         <div>
-          <h3 className="font-medium text-lg">{type}</h3>
-          <p className="text-sm text-gray-500">{time}</p>
+          <h3 className="font-medium text-base">{type}</h3>
+          <p className="text-xs text-gray-500">{time}</p>
         </div>
         <div className="flex items-center">
-          <span className="text-sm font-medium mr-3">{calories} kcal</span>
-          <div className="h-6 w-6 rounded-full border-2 flex items-center justify-center">
+          <span className="text-xs font-medium mr-2">{calories} kcal</span>
+          <div className="h-5 w-5 rounded-full border-2 flex items-center justify-center">
             {completed ? (
-              <div className="h-4 w-4 bg-fitness-purple rounded-full" />
+              <div className="h-3 w-3 bg-fitness-purple rounded-full" />
             ) : null}
           </div>
         </div>
       </div>
-      <div className="space-y-1">
+      <div className="space-y-0.5">
         {foods.map((food, index) => (
-          <div key={index} className="text-sm flex justify-between">
+          <div key={index} className="text-xs flex justify-between">
             <span>{food.name}</span>
             <span className="text-gray-500">{food.amount}</span>
           </div>

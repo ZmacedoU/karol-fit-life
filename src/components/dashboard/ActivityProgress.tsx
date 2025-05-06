@@ -21,21 +21,21 @@ const ActivityProgress: React.FC<ActivityProgressProps> = ({
   const percentage = Math.min(Math.round((current / goal) * 100), 100);
   
   return (
-    <Card className="fitness-card">
-      <div className="flex flex-col mb-2">
-        <span className="text-sm text-gray-500">{title}</span>
-        <div className="flex justify-between items-center mt-1">
-          <span className="text-xl font-semibold">
-            {current} <span className="text-sm font-normal">{unit}</span>
+    <Card className="p-3">
+      <div className="flex flex-col mb-1.5">
+        <span className="text-xs text-gray-500">{title}</span>
+        <div className="flex justify-between items-center">
+          <span className="text-base font-semibold">
+            {current} <span className="text-xs font-normal">{unit}</span>
           </span>
-          <span className="text-sm text-gray-500">Meta: {goal} {unit}</span>
+          <span className="text-xs text-gray-500">Meta: {goal} {unit}</span>
         </div>
       </div>
       <Progress 
         value={percentage} 
-        className="h-2"
+        className="h-1.5"
         style={{ 
-          backgroundColor: "#F3F4F6",
+          backgroundColor: "#2D2A35",
           ["--progress-background" as any]: color 
         }}
       />
