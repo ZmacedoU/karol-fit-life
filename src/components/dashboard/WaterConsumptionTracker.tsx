@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
-import { Droplet, DropletPlus, DropletMinus } from "lucide-react";
+import { Droplet, Plus, Minus } from "lucide-react";
 import { toast } from "sonner";
 
 interface WaterConsumptionTrackerProps {
@@ -106,7 +106,10 @@ const WaterConsumptionTracker: React.FC<WaterConsumptionTrackerProps> = ({
                 className="flex items-center gap-1 flex-1 min-w-[70px]"
                 onClick={() => addWater(amount)}
               >
-                <DropletPlus className="w-4 h-4" /> +{amount}L
+                <div className="flex items-center">
+                  <Droplet className="w-3 h-3 mr-1" />
+                  <Plus className="w-3 h-3" />
+                </div> +{amount}L
               </Button>
             ))}
             
@@ -116,7 +119,10 @@ const WaterConsumptionTracker: React.FC<WaterConsumptionTrackerProps> = ({
               className="flex items-center gap-1 min-w-[70px]"
               onClick={() => decreaseWater(0.1)}
             >
-              <DropletMinus className="w-4 h-4" /> -0.1L
+              <div className="flex items-center">
+                <Droplet className="w-3 h-3 mr-1" />
+                <Minus className="w-3 h-3" />
+              </div> -0.1L
             </Button>
           </div>
         </div>
