@@ -4,6 +4,9 @@ import BottomNav from "@/components/navigation/BottomNav";
 import ActivityProgress from "@/components/dashboard/ActivityProgress";
 import WorkoutCard from "@/components/dashboard/WorkoutCard";
 import MealCard from "@/components/dashboard/MealCard";
+import StatisticsChart from "@/components/dashboard/StatisticsChart";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ChartBarIcon, CalendarDays, Activity } from "lucide-react";
 
 const Dashboard: React.FC = () => {
   const workouts = [
@@ -36,6 +39,46 @@ const Dashboard: React.FC = () => {
     },
   ];
 
+  // Dados para os gráficos
+  const caloriesData = [
+    { name: "Seg", value: 2100 },
+    { name: "Ter", value: 1950 },
+    { name: "Qua", value: 2200 },
+    { name: "Qui", value: 2050 },
+    { name: "Sex", value: 1850 },
+    { name: "Sáb", value: 1700 },
+    { name: "Dom", value: 1250 },
+  ];
+
+  const proteinData = [
+    { name: "Seg", value: 145 },
+    { name: "Ter", value: 132 },
+    { name: "Qua", value: 150 },
+    { name: "Qui", value: 140 },
+    { name: "Sex", value: 125 },
+    { name: "Sáb", value: 110 },
+    { name: "Dom", value: 80 },
+  ];
+
+  const weightData = [
+    { name: "01/05", value: 81.5 },
+    { name: "08/05", value: 80.8 },
+    { name: "15/05", value: 80.2 },
+    { name: "22/05", value: 79.5 },
+    { name: "29/05", value: 79.0 },
+    { name: "05/06", value: 78.5 },
+  ];
+
+  const workoutData = [
+    { name: "Seg", value: 75 },
+    { name: "Ter", value: 0 },
+    { name: "Qua", value: 85 },
+    { name: "Qui", value: 0 },
+    { name: "Sex", value: 90 },
+    { name: "Sáb", value: 60 },
+    { name: "Dom", value: 0 },
+  ];
+
   const getGreeting = () => {
     const hour = new Date().getHours();
     if (hour < 12) return "Bom dia";
@@ -46,13 +89,15 @@ const Dashboard: React.FC = () => {
   return (
     <div className="pb-20 animate-fade-in">
       {/* Header */}
-      <div className="px-5 pt-8 pb-5 bg-white">
+      <div className="px-5 pt-8 pb-5 bg-card">
         <div className="flex justify-between items-center">
           <div>
             <h1 className="text-2xl font-bold">{getGreeting()}, João</h1>
-            <p className="text-gray-500 text-sm">Quarta-feira, 6 de Maio</p>
+            <p className="text-muted-foreground text-sm">Quarta-feira, 6 de Maio</p>
           </div>
-          <div className="h-10 w-10 bg-gray-200 rounded-full"></div>
+          <div className="h-10 w-10 bg-fitness-purple rounded-full flex items-center justify-center">
+            <span className="text-white text-sm font-bold">JP</span>
+          </div>
         </div>
       </div>
 
@@ -65,36 +110,85 @@ const Dashboard: React.FC = () => {
             current={1250} 
             goal={2200} 
             unit="kcal"
-            color="#8B5CF6" 
+            color="#9b87f5"
           />
           <ActivityProgress 
             title="Proteínas" 
             current={80} 
             goal={140} 
             unit="g"
-            color="#10B981" 
+            color="#4ADE80"
           />
           <ActivityProgress 
             title="Água" 
             current={1.2} 
             goal={3} 
             unit="L"
-            color="#0EA5E9" 
+            color="#38BDF8"
           />
           <ActivityProgress 
             title="Passos" 
             current={5780} 
             goal={10000} 
             unit=""
-            color="#F97316" 
+            color="#FB923C"
           />
+        </div>
+
+        {/* Charts Section */}
+        <div className="mt-6">
+          <Tabs defaultValue="calories" className="w-full">
+            <TabsList className="grid w-full grid-cols-4 mb-6">
+              <TabsTrigger value="calories">Calorias</TabsTrigger>
+              <TabsTrigger value="protein">Proteína</TabsTrigger>
+              <TabsTrigger value="weight">Peso</TabsTrigger>
+              <TabsTrigger value="workouts">Treinos</TabsTrigger>
+            </TabsList>
+            
+            <TabsContent value="calories" className="mt-0">
+              <StatisticsChart 
+                title="Consumo de Calorias" 
+                data={caloriesData} 
+                color="#9b87f5"
+                valueFormatter={(value) => `${value} kcal`}
+              />
+            </TabsContent>
+            
+            <TabsContent value="protein" className="mt-0">
+              <StatisticsChart 
+                title="Consumo de Proteínas" 
+                data={proteinData} 
+                color="#4ADE80"
+                valueFormatter={(value) => `${value}g`}
+              />
+            </TabsContent>
+            
+            <TabsContent value="weight" className="mt-0">
+              <StatisticsChart 
+                title="Evolução de Peso" 
+                data={weightData} 
+                color="#38BDF8"
+                valueFormatter={(value) => `${value} kg`}
+              />
+            </TabsContent>
+            
+            <TabsContent value="workouts" className="mt-0">
+              <StatisticsChart 
+                title="Intensidade dos Treinos" 
+                data={workoutData} 
+                color="#FB923C"
+                valueFormatter={(value) => value ? `${value}%` : 'Descanso'}
+              />
+            </TabsContent>
+          </Tabs>
         </div>
 
         {/* Workout Section */}
         <div>
-          <div className="flex justify-between items-center mb-3">
+          <div className="flex items-center mb-3">
+            <Activity className="h-5 w-5 mr-2 text-fitness-purple" />
             <h2 className="text-lg font-semibold">Seus treinos</h2>
-            <a href="/workout" className="text-sm text-fitness-purple">Ver todos</a>
+            <a href="/workout" className="ml-auto text-sm text-fitness-purple">Ver todos</a>
           </div>
           <div className="space-y-3">
             {workouts.map((workout, index) => (
@@ -111,9 +205,10 @@ const Dashboard: React.FC = () => {
 
         {/* Meals Section */}
         <div>
-          <div className="flex justify-between items-center mb-3">
+          <div className="flex items-center mb-3">
+            <CalendarDays className="h-5 w-5 mr-2 text-fitness-purple" />
             <h2 className="text-lg font-semibold">Refeições do dia</h2>
-            <a href="/diet" className="text-sm text-fitness-purple">Ver todas</a>
+            <a href="/diet" className="ml-auto text-sm text-fitness-purple">Ver todas</a>
           </div>
           <div className="space-y-3">
             {meals.map((meal, index) => (

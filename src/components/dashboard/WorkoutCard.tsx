@@ -22,12 +22,16 @@ const WorkoutCard: React.FC<WorkoutCardProps> = ({
       <div className="flex justify-between items-start">
         <div>
           <h3 className="font-medium text-lg">{title}</h3>
-          <div className="flex items-center text-sm text-gray-500 mt-1">
+          <div className="flex items-center text-sm text-muted-foreground mt-1">
             <Calendar className="h-4 w-4 mr-1" />
             <span>{time} • {exercises} exercícios</span>
           </div>
         </div>
-        <Button variant="outline" size="sm" className="h-8">
+        <Button 
+          variant={isToday ? "default" : "outline"} 
+          size="sm" 
+          className={isToday ? "h-8 bg-fitness-purple hover:bg-fitness-darkPurple" : "h-8"}
+        >
           {isToday ? "Iniciar" : "Ver"}
         </Button>
       </div>
