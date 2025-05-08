@@ -31,26 +31,6 @@ const Dashboard: React.FC = () => {
     return date.toLocaleDateString('pt-BR', options);
   };
 
-  // Handle action button clicks
-  const handleActionClick = (action: string) => {
-    switch(action) {
-      case 'agenda':
-        navigate('/workout');
-        break;
-      case 'home':
-        toast.info("Treinos em casa em breve!");
-        break;
-      case 'feed':
-        toast.info("Feed de notícias em breve!");
-        break;
-      case 'more':
-        toast.info("Mais opções em breve!");
-        break;
-      default:
-        break;
-    }
-  };
-
   // Sample nutrition data
   const nutritionData = {
     calories: {
@@ -112,7 +92,10 @@ const Dashboard: React.FC = () => {
 
       {/* Main Content */}
       <div className="px-5 py-6 space-y-6">
-        {/* Workout of the day card */}
+        {/* 1. Nutrition Summary - Now first */}
+        <NutritionSummary data={nutritionData} />
+        
+        {/* 2. Workout of the day card - Second */}
         <div className="rounded-2xl overflow-hidden shadow-md bg-card">
           <div className="relative h-48 overflow-hidden">
             <img 
@@ -160,66 +143,11 @@ const Dashboard: React.FC = () => {
             </div>
           </div>
         </div>
+        
+        {/* 3. Workout Frequency Chart - Third */}
+        <WorkoutFrequencyChart data={workoutFrequencyData} />
 
-        {/* Charts and Trackers Grid */}
-        <div className="grid gap-6">
-          {/* Workout Frequency Chart */}
-          <WorkoutFrequencyChart data={workoutFrequencyData} />
-          
-          {/* Nutrition Summary */}
-          <NutritionSummary data={nutritionData} />
-          
-          {/* Water Consumption Tracker */}
-          <WaterConsumptionTracker initialValue={1.2} dailyGoal={3.0} />
-        </div>
-
-        {/* Quick Action Icons */}
-        <div>
-          <h3 className="font-semibold text-lg mb-3">Acesso rápido</h3>
-          <div className="grid grid-cols-4 gap-2 bg-card rounded-xl p-2">
-            <div 
-              className="flex flex-col items-center p-3" 
-              onClick={() => handleActionClick('agenda')}
-            >
-              <div className="action-icon">
-                <CalendarDays className="h-6 w-6 text-foreground" />
-              </div>
-              <span className="text-xs font-medium">Agenda</span>
-            </div>
-            
-            <div 
-              className="flex flex-col items-center p-3" 
-              onClick={() => handleActionClick('home')}
-            >
-              <div className="action-icon">
-                <Home className="h-6 w-6 text-foreground" />
-              </div>
-              <span className="text-xs font-medium">Em casa</span>
-            </div>
-            
-            <div 
-              className="flex flex-col items-center p-3" 
-              onClick={() => handleActionClick('feed')}
-            >
-              <div className="action-icon">
-                <Image className="h-6 w-6 text-foreground" />
-              </div>
-              <span className="text-xs font-medium">Feed</span>
-            </div>
-            
-            <div 
-              className="flex flex-col items-center p-3" 
-              onClick={() => handleActionClick('more')}
-            >
-              <div className="action-icon">
-                <MoreHorizontal className="h-6 w-6 text-foreground" />
-              </div>
-              <span className="text-xs font-medium">Outros</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Upcoming Classes - This section is moved to the bottom */}
+        {/* 4. Upcoming Classes - Fourth */}
         <div>
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-bold">Próximas aulas</h2>
@@ -289,6 +217,9 @@ const Dashboard: React.FC = () => {
             </div>
           </div>
         </div>
+
+        {/* 5. Water Consumption Tracker - Last */}
+        <WaterConsumptionTracker initialValue={1.2} dailyGoal={3.0} />
       </div>
 
       <BottomNav />
