@@ -1,14 +1,18 @@
 
-import React from "react";
+import React, { useState } from "react";
 import BottomNav from "@/components/navigation/BottomNav";
 import NutritionSummary from "@/components/dashboard/NutritionSummary";
-import WaterConsumptionTracker from "@/components/dashboard/WaterConsumptionTracker";
 import WorkoutFrequencyChart from "@/components/dashboard/WorkoutFrequencyChart";
 import ProfileHeader from "@/components/dashboard/ProfileHeader";
 import WorkoutOfTheDay from "@/components/dashboard/WorkoutOfTheDay";
 import UpcomingClasses from "@/components/dashboard/UpcomingClasses";
+import { Droplet } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import WaterConsumptionDialog from "@/components/dashboard/WaterConsumptionDialog";
 
 const Dashboard: React.FC = () => {
+  const [isWaterDialogOpen, setIsWaterDialogOpen] = useState(false);
+  
   // Sample nutrition data
   const nutritionData = {
     calories: {
@@ -50,7 +54,7 @@ const Dashboard: React.FC = () => {
   ];
 
   return (
-    <div className="pb-20 dark:bg-background min-h-screen">
+    <div className="pb-20 dark:bg-background min-h-screen relative">
       {/* Header Profile Section */}
       <ProfileHeader 
         name="Nathan"
@@ -70,10 +74,24 @@ const Dashboard: React.FC = () => {
 
         {/* 4. Upcoming Classes */}
         <UpcomingClasses classes={upcomingClassesData} />
-
-        {/* 5. Water Consumption Tracker */}
-        <WaterConsumptionTracker initialValue={1.2} dailyGoal={3.0} />
       </div>
+
+      {/* Water Consumption Floating Button */}
+      <div className="fixed bottom-20 left-1/2 transform -translate-x-1/2 z-20">
+        <Button 
+          onClick={() => setIsWaterDialogOpen(true)}
+          className="h-14 w-14 rounded-full shadow-lg bg-blue-500 hover:bg-blue-600"
+          aria-label="Registro de água"
+        >
+          <Droplet className="h-6 w-6" />
+        </Button>
+      </div>
+
+      {/* Water Consumption Dialog */}
+      <WaterConsumptionDialog 
+        open={isWaterDialogOpen} 
+        onOpenChange={setIsWaterDialogOpen} 
+      />
 
       <BottomNav />
     </div>
