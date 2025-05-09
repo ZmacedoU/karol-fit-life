@@ -28,11 +28,11 @@ const Dashboard: React.FC = () => {
   // Sample workout frequency data
   const workoutFrequencyData = [
     { day: "Seg", frequency: 1 },
-    { day: "Ter", frequency: 2 },
+    { day: "Ter", frequency: 1 },
     { day: "Qua", frequency: 0 },
     { day: "Qui", frequency: 1 },
-    { day: "Sex", frequency: 2 },
-    { day: "Sáb", frequency: 1 },
+    { day: "Sex", frequency: 0 },
+    { day: "Sáb", frequency: 0 },
     { day: "Dom", frequency: 0 }
   ];
 
@@ -45,7 +45,7 @@ const Dashboard: React.FC = () => {
       />
 
       {/* Main Content */}
-      <div className="px-5 py-6 space-y-8">
+      <div className="px-5 py-6 space-y-6">
         {/* 1. Nutrition Summary */}
         <NutritionSummary data={nutritionData} />
         
