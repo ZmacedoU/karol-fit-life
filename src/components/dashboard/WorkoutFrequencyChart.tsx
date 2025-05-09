@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Card } from "@/components/ui/card";
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 
 interface WorkoutFrequencyChartProps {
   data: Array<{
@@ -14,50 +14,54 @@ const WorkoutFrequencyChart: React.FC<WorkoutFrequencyChartProps> = ({ data }) =
   return (
     <Card className="p-5">
       <h3 className="font-bold text-lg mb-4">Frequência Semanal</h3>
-      <div className="h-[180px]">
+      <div className="h-[180px] animate-fade-in">
         <ResponsiveContainer width="100%" height="100%">
-          <AreaChart
+          <BarChart
             data={data}
             margin={{ top: 5, right: 5, left: 0, bottom: 5 }}
+            barSize={24}
+            className="animate-scale-in"
           >
-            <defs>
-              <linearGradient id="colorFrequency" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#8B5CF6" stopOpacity={0.8} />
-                <stop offset="95%" stopColor="#8B5CF6" stopOpacity={0} />
-              </linearGradient>
-            </defs>
-            <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
             <XAxis 
               dataKey="day"
-              tick={{ fill: 'var(--muted-foreground)', fontSize: 10 }}
-              tickLine={{ stroke: 'var(--muted-foreground)' }}
-              axisLine={{ stroke: 'var(--muted-foreground)' }}
+              tick={{ fill: 'var(--muted-foreground)', fontSize: 12 }}
+              tickLine={false}
+              axisLine={false}
             />
             <YAxis 
-              tick={{ fill: 'var(--muted-foreground)', fontSize: 10 }}
-              tickLine={{ stroke: 'var(--muted-foreground)' }}
-              axisLine={{ stroke: 'var(--muted-foreground)' }}
+              tick={{ fill: 'var(--muted-foreground)', fontSize: 12 }}
+              tickLine={false}
+              axisLine={false}
               domain={[0, 3]}
               ticks={[0, 1, 2, 3]}
             />
             <Tooltip
+              cursor={{ fill: 'rgba(255, 255, 255, 0.05)' }}
               contentStyle={{
-                backgroundColor: "rgba(0, 0, 0, 0.8)",
-                border: "1px solid rgba(255, 255, 255, 0.1)",
+                backgroundColor: "var(--card)",
+                border: "1px solid var(--border)",
                 borderRadius: "8px",
-                color: "#fff"
+                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                padding: "8px 12px",
               }}
-              formatter={(value) => [`${value} treino(s)`, 'Frequência']}
+              formatter={(value) => [`${value} treino(s)`]}
               labelFormatter={(label) => `${label}`}
             />
-            <Area
-              type="monotone"
+            <Bar
               dataKey="frequency"
-              stroke="#8B5CF6"
-              fillOpacity={1}
-              fill="url(#colorFrequency)"
-            />
-          </AreaChart>
+              radius={[4, 4, 0, 0]}
+              fill="#8B5CF6"
+              animationDuration={800}
+              animationEasing="ease-out"
+            >
+              {data.map((entry, index) => (
+                <rect 
+                  key={`rect-${index}`} 
+                  fillOpacity={entry.frequency > 0 ? 1 : 0.3} 
+                />
+              ))}
+            </Bar>
+          </BarChart>
         </ResponsiveContainer>
       </div>
     </Card>
