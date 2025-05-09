@@ -36,6 +36,21 @@ const Dashboard: React.FC = () => {
     { day: "Dom", frequency: 0 }
   ];
 
+  // Generate motivational message based on the current day and progress
+  const getMotivationalMessage = () => {
+    const today = new Date().getDay(); // 0 = Sunday, 1 = Monday, etc.
+    const completedDays = workoutFrequencyData.filter(day => day.frequency > 0).length;
+    
+    if (completedDays === 0) return "Vamos começar a semana com tudo!";
+    if (completedDays === workoutFrequencyData.length) return "Parabéns! Você completou todos os treinos da semana!";
+    
+    if (today === 5) return "Sexta também é dia! Não desista agora.";
+    if (today === 3 && completedDays >= 3) return "Metade da semana concluída! Continue assim!";
+    if (completedDays >= 4) return "Estamos quase completando a semana de treino, não desista agora!";
+    
+    return "Mantenha a consistência, cada treino conta!";
+  };
+
   return (
     <div className="pb-20 dark:bg-background min-h-screen relative">
       {/* Header Profile Section */}
@@ -44,8 +59,13 @@ const Dashboard: React.FC = () => {
         imageUrl="https://randomuser.me/api/portraits/men/32.jpg"
       />
 
+      {/* Motivational Message */}
+      <div className="px-5 pt-2 pb-1">
+        <p className="text-sm text-fitness-purple font-medium animate-fade-in">{getMotivationalMessage()}</p>
+      </div>
+
       {/* Main Content */}
-      <div className="px-5 py-6 space-y-6">
+      <div className="px-5 py-4 space-y-6">
         {/* 1. Nutrition Summary */}
         <NutritionSummary data={nutritionData} />
         

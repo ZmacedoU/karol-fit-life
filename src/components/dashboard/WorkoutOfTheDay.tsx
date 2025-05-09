@@ -7,7 +7,7 @@ const WorkoutOfTheDay: React.FC = () => {
   const navigate = useNavigate();
   
   return (
-    <div className="rounded-2xl overflow-hidden shadow-md relative h-44">
+    <div className="rounded-2xl overflow-hidden shadow-md relative h-36">
       <div className="absolute inset-0 bg-gradient-to-br from-fitness-purple to-fitness-darkPurple"></div>
       <div className="absolute inset-0 flex flex-col justify-between p-5">
         <div className="flex items-center gap-2">
