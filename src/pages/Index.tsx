@@ -7,13 +7,17 @@ const Index: React.FC = () => {
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-white to-fitness-lightGray px-4">
       <div className="animate-scale-in">
         <div className="mb-8 text-center">
-          <div className="h-20 w-20 bg-fitness-purple rounded-full flex items-center justify-center mx-auto mb-4">
-            <span className="text-white text-2xl font-bold">KF</span>
+          <div className="h-24 w-auto mx-auto mb-4">
+            <img 
+              src="/lovable-uploads/e0fd001c-0828-4e6a-ab50-c214de822f44.png" 
+              alt="Vinicius Di Fiore Treinador" 
+              className="h-full w-auto object-contain"
+            />
           </div>
-          <h1 className="text-3xl font-bold text-fitness-darkGray">Karol Fit Life</h1>
-          <p className="text-gray-500 mt-2">Seu parceiro de treino e dieta</p>
+          <h1 className="text-3xl font-bold text-fitness-darkGray">Vinicius Di Fiore</h1>
+          <p className="text-gray-500 mt-2">Seu treinador pessoal</p>
         </div>
-        <AuthForm />
+        <AuthForm showRegister={false} />
       </div>
     </div>
   );
