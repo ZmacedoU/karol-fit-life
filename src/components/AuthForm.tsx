@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -18,7 +19,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ showRegister = true }) => {
   return (
     <Card className="w-[350px] sm:w-[450px] animate-fade-in">
       <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl font-bold text-center">Vinicius Di Fiore</CardTitle>
+        <CardTitle className="text-2xl font-bold text-center">Acesso</CardTitle>
         <CardDescription className="text-center">
           Entre para acessar sua conta
         </CardDescription>
