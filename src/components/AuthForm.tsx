@@ -17,7 +17,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ showRegister = true }) => {
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
   return (
-    <Card className="w-[350px] sm:w-[450px] animate-fade-in bg-white/10 backdrop-blur-sm border-fitness-purple/20">
+    <Card className="w-[350px] sm:w-[450px] animate-fade-in bg-white/10 backdrop-blur-sm border-fitness-red/20">
       <CardHeader className="space-y-1">
         <CardTitle className="text-2xl font-bold text-center text-white">Acesso</CardTitle>
         <CardDescription className="text-center text-gray-300">
@@ -28,8 +28,8 @@ const AuthForm: React.FC<AuthFormProps> = ({ showRegister = true }) => {
         {showRegister ? (
           <Tabs defaultValue="login" className="w-full" onValueChange={setActiveTab}>
             <TabsList className="grid w-full grid-cols-2 mb-8 bg-white/10">
-              <TabsTrigger value="login" className="data-[state=active]:bg-fitness-purple">Login</TabsTrigger>
-              <TabsTrigger value="register" className="data-[state=active]:bg-fitness-purple">Cadastro</TabsTrigger>
+              <TabsTrigger value="login" className="data-[state=active]:bg-fitness-orange">Login</TabsTrigger>
+              <TabsTrigger value="register" className="data-[state=active]:bg-fitness-orange">Cadastro</TabsTrigger>
             </TabsList>
             <TabsContent value="login" className="space-y-4">
               <div className="space-y-2">
@@ -37,7 +37,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ showRegister = true }) => {
                   <Mail className="absolute left-3 top-3 h-4 w-4 text-white/70" />
                   <Input 
                     placeholder="Seu email" 
-                    className="pl-10 fitness-input bg-white/10 text-white border-white/20 focus:border-fitness-purple" 
+                    className="pl-10 fitness-input bg-white/10 text-white border-white/20 focus:border-fitness-orange" 
                     type="email"
                     autoComplete="email"
                   />
@@ -48,7 +48,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ showRegister = true }) => {
                   <Lock className="absolute left-3 top-3 h-4 w-4 text-white/70" />
                   <Input 
                     placeholder="Sua senha" 
-                    className="pl-10 pr-10 fitness-input bg-white/10 text-white border-white/20 focus:border-fitness-purple" 
+                    className="pl-10 pr-10 fitness-input bg-white/10 text-white border-white/20 focus:border-fitness-orange" 
                     type={showPassword ? "text" : "password"}
                     autoComplete="current-password"
                   />
@@ -67,14 +67,14 @@ const AuthForm: React.FC<AuthFormProps> = ({ showRegister = true }) => {
                 <div className="text-sm text-right">
                   <a 
                     href="#" 
-                    className="text-xs text-fitness-purple hover:underline"
+                    className="text-xs text-fitness-orange hover:underline"
                   >
                     Esqueceu a senha?
                   </a>
                 </div>
               </div>
               <Button 
-                className="w-full bg-fitness-purple hover:bg-fitness-darkPurple text-white"
+                className="w-full bg-fitness-orange hover:bg-fitness-darkOrange text-white"
                 onClick={() => window.location.href = "/dashboard"}
               >
                 Entrar
@@ -86,7 +86,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ showRegister = true }) => {
                   <User className="absolute left-3 top-3 h-4 w-4 text-white/70" />
                   <Input 
                     placeholder="Nome completo" 
-                    className="pl-10 fitness-input bg-white/10 text-white border-white/20 focus:border-fitness-purple" 
+                    className="pl-10 fitness-input bg-white/10 text-white border-white/20 focus:border-fitness-orange" 
                   />
                 </div>
               </div>
@@ -95,7 +95,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ showRegister = true }) => {
                   <Mail className="absolute left-3 top-3 h-4 w-4 text-white/70" />
                   <Input 
                     placeholder="Seu email" 
-                    className="pl-10 fitness-input bg-white/10 text-white border-white/20 focus:border-fitness-purple" 
+                    className="pl-10 fitness-input bg-white/10 text-white border-white/20 focus:border-fitness-orange" 
                     type="email"
                     autoComplete="email"
                   />
@@ -106,7 +106,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ showRegister = true }) => {
                   <Lock className="absolute left-3 top-3 h-4 w-4 text-white/70" />
                   <Input 
                     placeholder="Crie uma senha" 
-                    className="pl-10 pr-10 fitness-input bg-white/10 text-white border-white/20 focus:border-fitness-purple" 
+                    className="pl-10 pr-10 fitness-input bg-white/10 text-white border-white/20 focus:border-fitness-orange" 
                     type={showPassword ? "text" : "password"}
                   />
                   <button 
@@ -122,7 +122,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ showRegister = true }) => {
                   </button>
                 </div>
               </div>
-              <Button className="w-full bg-fitness-purple hover:bg-fitness-darkPurple text-white">
+              <Button className="w-full bg-fitness-orange hover:bg-fitness-darkOrange text-white">
                 Cadastrar
               </Button>
             </TabsContent>
@@ -134,7 +134,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ showRegister = true }) => {
                 <Mail className="absolute left-3 top-3 h-4 w-4 text-white/70" />
                 <Input 
                   placeholder="Seu email" 
-                  className="pl-10 fitness-input bg-white/10 text-white border-white/20 focus:border-fitness-purple" 
+                  className="pl-10 fitness-input bg-white/10 text-white border-white/20 focus:border-fitness-orange" 
                   type="email"
                   autoComplete="email"
                 />
@@ -145,7 +145,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ showRegister = true }) => {
                 <Lock className="absolute left-3 top-3 h-4 w-4 text-white/70" />
                 <Input 
                   placeholder="Sua senha" 
-                  className="pl-10 pr-10 fitness-input bg-white/10 text-white border-white/20 focus:border-fitness-purple" 
+                  className="pl-10 pr-10 fitness-input bg-white/10 text-white border-white/20 focus:border-fitness-orange" 
                   type={showPassword ? "text" : "password"}
                   autoComplete="current-password"
                 />
@@ -164,14 +164,14 @@ const AuthForm: React.FC<AuthFormProps> = ({ showRegister = true }) => {
               <div className="text-sm text-right">
                 <a 
                   href="#" 
-                  className="text-xs text-fitness-purple hover:underline"
+                  className="text-xs text-fitness-orange hover:underline"
                 >
                   Esqueceu a senha?
                 </a>
               </div>
             </div>
             <Button 
-              className="w-full bg-fitness-purple hover:bg-fitness-darkPurple text-white"
+              className="w-full bg-fitness-orange hover:bg-fitness-darkOrange text-white"
               onClick={() => window.location.href = "/dashboard"}
             >
               Entrar
