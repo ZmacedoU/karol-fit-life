@@ -26,10 +26,10 @@ const NutritionSummary: React.FC<NutritionSummaryProps> = ({ data }) => {
   const fatPercentage = (data.macros.fat.consumed / data.macros.fat.goal) * 100;
 
   return (
-    <Card className="p-4 h-full flex flex-col">
+    <Card className="p-4 h-full">
       <h3 className="font-bold text-lg mb-3">Nutrição Diária</h3>
       
-      <div className="flex flex-col md:flex-row md:items-center gap-4 flex-grow">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-6 h-[calc(100%-40px)]">
         {/* Circular Calories Progress */}
         <div className="relative flex-shrink-0 mx-auto md:mx-0" style={{ width: "130px", height: "130px" }}>
           <svg className="w-full h-full" viewBox="0 0 100 100">
@@ -76,7 +76,7 @@ const NutritionSummary: React.FC<NutritionSummaryProps> = ({ data }) => {
         </div>
         
         {/* Macros Grid */}
-        <div className="grid grid-cols-3 gap-3 flex-grow">
+        <div className="grid grid-cols-3 gap-3 w-full">
           {/* Protein */}
           <div className="rounded-lg bg-gradient-to-br from-white/5 to-white/10 dark:from-white/5 dark:to-transparent border border-border/50 p-3 shadow-sm">
             <div className="text-xs text-muted-foreground mb-2">Proteínas</div>

@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import BottomNav from "@/components/navigation/BottomNav";
 import NutritionSummary from "@/components/dashboard/NutritionSummary";
@@ -68,7 +67,7 @@ const Dashboard: React.FC = () => {
       {/* Main Content - Two Column Grid Layout */}
       <div className="px-5 py-3 grid grid-cols-1 md:grid-cols-2 gap-4 h-[calc(100vh-185px)]">
         {/* Left Column - Nutrition Summary */}
-        <div className="h-full flex flex-col">
+        <div className="h-full">
           <NutritionSummary data={nutritionData} />
         </div>
         
