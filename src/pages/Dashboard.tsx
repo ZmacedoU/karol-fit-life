@@ -65,16 +65,25 @@ const Dashboard: React.FC = () => {
         motivationalMessage={motivationalMessage}
       />
 
-      {/* Main Content */}
-      <div className="px-5 py-6 space-y-6">
-        {/* 1. Nutrition Summary */}
-        <NutritionSummary data={nutritionData} />
+      {/* Main Content - Two Column Grid Layout */}
+      <div className="px-5 py-3 grid grid-cols-1 md:grid-cols-2 gap-4 h-[calc(100vh-185px)]">
+        {/* Left Column - Nutrition Summary */}
+        <div className="h-full flex flex-col">
+          <NutritionSummary data={nutritionData} />
+        </div>
         
-        {/* 2. Workout of the day */}
-        <WorkoutOfTheDay />
-        
-        {/* 3. Workout Frequency Chart (simplified) */}
-        <WorkoutFrequencyChart data={workoutFrequencyData} />
+        {/* Right Column - Workout Info */}
+        <div className="h-full flex flex-col gap-4">
+          {/* Workout of the day - Takes up more space */}
+          <div className="flex-grow">
+            <WorkoutOfTheDay />
+          </div>
+          
+          {/* Workout Frequency Chart - Takes less space */}
+          <div className="h-[42%]">
+            <WorkoutFrequencyChart data={workoutFrequencyData} />
+          </div>
+        </div>
       </div>
 
       {/* Water Consumption Floating Button */}

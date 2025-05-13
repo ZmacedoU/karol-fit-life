@@ -26,12 +26,12 @@ const NutritionSummary: React.FC<NutritionSummaryProps> = ({ data }) => {
   const fatPercentage = (data.macros.fat.consumed / data.macros.fat.goal) * 100;
 
   return (
-    <Card className="p-5">
-      <h3 className="font-bold text-lg mb-4">Nutrição Diária</h3>
+    <Card className="p-4 h-full flex flex-col">
+      <h3 className="font-bold text-lg mb-3">Nutrição Diária</h3>
       
-      <div className="flex flex-col md:flex-row md:items-center gap-6">
+      <div className="flex flex-col md:flex-row md:items-center gap-4 flex-grow">
         {/* Circular Calories Progress */}
-        <div className="relative flex-shrink-0 mx-auto md:mx-0" style={{ width: "140px", height: "140px" }}>
+        <div className="relative flex-shrink-0 mx-auto md:mx-0" style={{ width: "130px", height: "130px" }}>
           <svg className="w-full h-full" viewBox="0 0 100 100">
             {/* Background circle */}
             <circle
@@ -70,7 +70,7 @@ const NutritionSummary: React.FC<NutritionSummaryProps> = ({ data }) => {
           
           {/* Centered text */}
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="text-2xl font-bold">{data.calories.consumed}</span>
+            <span className="text-xl font-bold">{data.calories.consumed}</span>
             <span className="text-xs text-muted-foreground">/ {data.calories.goal} kcal</span>
           </div>
         </div>

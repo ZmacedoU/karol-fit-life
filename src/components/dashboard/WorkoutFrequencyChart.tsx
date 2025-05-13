@@ -12,9 +12,9 @@ interface WorkoutFrequencyChartProps {
 
 const WorkoutFrequencyChart: React.FC<WorkoutFrequencyChartProps> = ({ data }) => {
   return (
-    <Card className="p-5">
-      <h3 className="text-lg font-bold mb-3">Frequência Semanal</h3>
-      <div className="grid grid-cols-7 gap-2 animate-fade-in">
+    <Card className="p-4 h-full">
+      <h3 className="text-base font-bold mb-2">Frequência Semanal</h3>
+      <div className="grid grid-cols-7 gap-1 animate-fade-in h-[calc(100%-36px)] flex items-center">
         {data.map((day, index) => (
           <div 
             key={day.day} 
@@ -22,7 +22,7 @@ const WorkoutFrequencyChart: React.FC<WorkoutFrequencyChartProps> = ({ data }) =
           >
             <div 
               className={`
-                h-12 w-12 rounded-full flex items-center justify-center mb-1
+                h-10 w-10 rounded-full flex items-center justify-center mb-1
                 ${day.frequency > 0 
                   ? 'bg-fitness-orange text-white' 
                   : 'bg-muted/30 text-muted-foreground'}
@@ -31,7 +31,7 @@ const WorkoutFrequencyChart: React.FC<WorkoutFrequencyChartProps> = ({ data }) =
               `}
             >
               {day.frequency > 0 ? (
-                <Check className="h-5 w-5" />
+                <Check className="h-4 w-4" />
               ) : null}
             </div>
             <span className="text-xs font-medium">{day.day}</span>
