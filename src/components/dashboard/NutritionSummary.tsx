@@ -2,6 +2,7 @@
 import React from "react";
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface NutritionData {
   calories: {
@@ -20,18 +21,30 @@ interface NutritionSummaryProps {
 }
 
 const NutritionSummary: React.FC<NutritionSummaryProps> = ({ data }) => {
+  const isMobile = useIsMobile();
+  
   const caloriePercentage = (data.calories.consumed / data.calories.goal) * 100;
   const proteinPercentage = (data.macros.protein.consumed / data.macros.protein.goal) * 100;
   const carbsPercentage = (data.macros.carbs.consumed / data.macros.carbs.goal) * 100;
   const fatPercentage = (data.macros.fat.consumed / data.macros.fat.goal) * 100;
 
+  // Calculate sizes based on mobile or desktop
+  const circleSize = isMobile ? "100px" : "130px";
+  const cardPadding = isMobile ? "p-3" : "p-4";
+  const macroPadding = isMobile ? "p-2" : "p-3";
+  const macroGap = isMobile ? "gap-2" : "gap-3";
+  const textSize = isMobile ? "text-lg" : "text-xl";
+  const verticalSpacing = isMobile ? "gap-3" : "gap-6";
+  const macroTextSize = isMobile ? "text-xs" : "text-sm";
+  const macroTitleSize = isMobile ? "text-[10px]" : "text-xs";
+
   return (
-    <Card className="p-4 h-full">
-      <h3 className="font-bold text-lg mb-3">Nutrição Diária</h3>
+    <Card className={`${cardPadding} h-full`}>
+      <h3 className={`font-bold text-lg ${isMobile ? "mb-2" : "mb-3"}`}>Nutrição Diária</h3>
       
-      <div className="flex flex-col md:flex-row items-center justify-between gap-6 h-[calc(100%-40px)]">
+      <div className={`flex flex-col md:flex-row items-center justify-between ${verticalSpacing} h-[calc(100%-${isMobile ? "32px" : "40px"})]`}>
         {/* Circular Calories Progress */}
-        <div className="relative flex-shrink-0 mx-auto md:mx-0" style={{ width: "130px", height: "130px" }}>
+        <div className="relative flex-shrink-0 mx-auto md:mx-0" style={{ width: circleSize, height: circleSize }}>
           <svg className="w-full h-full" viewBox="0 0 100 100">
             {/* Background circle */}
             <circle
@@ -70,17 +83,18 @@ const NutritionSummary: React.FC<NutritionSummaryProps> = ({ data }) => {
           
           {/* Centered text */}
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="text-xl font-bold">{data.calories.consumed}</span>
+            <span className={`${textSize} font-bold`}>{data.calories.consumed}</span>
             <span className="text-xs text-muted-foreground">/ {data.calories.goal} kcal</span>
           </div>
         </div>
         
         {/* Macros Grid */}
-        <div className="grid grid-cols-3 gap-3 w-full">
+        <div className={`grid grid-cols-3 ${macroGap} w-full`}>
           {/* Protein */}
-          <div className="rounded-lg bg-gradient-to-br from-white/5 to-white/10 dark:from-white/5 dark:to-transparent border border-border/50 p-3 shadow-sm">
-            <div className="text-xs text-muted-foreground mb-2">Proteínas</div>
-            <div className="font-medium text-sm mb-2">{data.macros.protein.consumed}g
+          <div className={`rounded-lg bg-gradient-to-br from-white/5 to-white/10 dark:from-white/5 dark:to-transparent border border-border/50 ${macroPadding} shadow-sm`}>
+            <div className={`${macroTitleSize} text-muted-foreground ${isMobile ? "mb-1" : "mb-2"}`}>Proteínas</div>
+            <div className={`font-medium ${macroTextSize} ${isMobile ? "mb-1" : "mb-2"}`}>
+              {data.macros.protein.consumed}g
               <span className="text-xs text-muted-foreground"> / {data.macros.protein.goal}g</span>
             </div>
             <Progress 
@@ -91,9 +105,10 @@ const NutritionSummary: React.FC<NutritionSummaryProps> = ({ data }) => {
           </div>
           
           {/* Carbs */}
-          <div className="rounded-lg bg-gradient-to-br from-white/5 to-white/10 dark:from-white/5 dark:to-transparent border border-border/50 p-3 shadow-sm">
-            <div className="text-xs text-muted-foreground mb-2">Carboidratos</div>
-            <div className="font-medium text-sm mb-2">{data.macros.carbs.consumed}g
+          <div className={`rounded-lg bg-gradient-to-br from-white/5 to-white/10 dark:from-white/5 dark:to-transparent border border-border/50 ${macroPadding} shadow-sm`}>
+            <div className={`${macroTitleSize} text-muted-foreground ${isMobile ? "mb-1" : "mb-2"}`}>Carboidratos</div>
+            <div className={`font-medium ${macroTextSize} ${isMobile ? "mb-1" : "mb-2"}`}>
+              {data.macros.carbs.consumed}g
               <span className="text-xs text-muted-foreground"> / {data.macros.carbs.goal}g</span>
             </div>
             <Progress 
@@ -104,9 +119,10 @@ const NutritionSummary: React.FC<NutritionSummaryProps> = ({ data }) => {
           </div>
           
           {/* Fat */}
-          <div className="rounded-lg bg-gradient-to-br from-white/5 to-white/10 dark:from-white/5 dark:to-transparent border border-border/50 p-3 shadow-sm">
-            <div className="text-xs text-muted-foreground mb-2">Gorduras</div>
-            <div className="font-medium text-sm mb-2">{data.macros.fat.consumed}g
+          <div className={`rounded-lg bg-gradient-to-br from-white/5 to-white/10 dark:from-white/5 dark:to-transparent border border-border/50 ${macroPadding} shadow-sm`}>
+            <div className={`${macroTitleSize} text-muted-foreground ${isMobile ? "mb-1" : "mb-2"}`}>Gorduras</div>
+            <div className={`font-medium ${macroTextSize} ${isMobile ? "mb-1" : "mb-2"}`}>
+              {data.macros.fat.consumed}g
               <span className="text-xs text-muted-foreground"> / {data.macros.fat.goal}g</span>
             </div>
             <Progress 
