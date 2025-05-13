@@ -9,6 +9,23 @@ import { Droplet } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import WaterConsumptionDialog from "@/components/dashboard/WaterConsumptionDialog";
 
+// Helper function to generate motivational message based on workout data
+const getMotivationalMessage = (data: Array<{ day: string; frequency: number }>) => {
+  const completedDays = data.filter(day => day.frequency > 0).length;
+  const totalDays = data.length;
+  
+  const today = new Date().getDay(); // 0 = Sunday, 1 = Monday, etc.
+  
+  if (completedDays === 0) return "Vamos começar a semana com tudo!";
+  if (completedDays === totalDays) return "Parabéns! Você completou todos os treinos da semana!";
+  
+  if (today === 5) return "Sexta também é dia! Não desista agora.";
+  if (today === 3 && completedDays >= 3) return "Metade da semana concluída! Continue assim!";
+  if (completedDays >= 4) return "Estamos quase completando a semana de treino, não desista agora!";
+  
+  return "Mantenha a consistência, cada treino conta!";
+};
+
 const Dashboard: React.FC = () => {
   const [isWaterDialogOpen, setIsWaterDialogOpen] = useState(false);
   
@@ -36,12 +53,16 @@ const Dashboard: React.FC = () => {
     { day: "Dom", frequency: 0 }
   ];
 
+  // Get the motivational message for the user
+  const motivationalMessage = getMotivationalMessage(workoutFrequencyData);
+
   return (
     <div className="pb-20 dark:bg-background min-h-screen relative">
-      {/* Header Profile Section */}
+      {/* Header Profile Section with motivational message */}
       <ProfileHeader 
         name="Nathan"
         imageUrl="https://randomuser.me/api/portraits/men/32.jpg"
+        motivationalMessage={motivationalMessage}
       />
 
       {/* Main Content */}
@@ -52,7 +73,7 @@ const Dashboard: React.FC = () => {
         {/* 2. Workout of the day */}
         <WorkoutOfTheDay />
         
-        {/* 3. Workout Frequency Chart */}
+        {/* 3. Workout Frequency Chart (simplified) */}
         <WorkoutFrequencyChart data={workoutFrequencyData} />
       </div>
 

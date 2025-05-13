@@ -5,9 +5,10 @@ import ThemeToggle from "@/components/navigation/ThemeToggle";
 interface ProfileHeaderProps {
   name: string;
   imageUrl: string;
+  motivationalMessage?: string;
 }
 
-const ProfileHeader: React.FC<ProfileHeaderProps> = ({ name, imageUrl }) => {
+const ProfileHeader: React.FC<ProfileHeaderProps> = ({ name, imageUrl, motivationalMessage }) => {
   // Helper function for the greeting
   const getGreeting = () => {
     const hour = new Date().getHours();
@@ -47,6 +48,13 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({ name, imageUrl }) => {
           </div>
         </div>
       </div>
+      
+      {/* Added motivational message centered below the profile info */}
+      {motivationalMessage && (
+        <div className="mt-4 text-center">
+          <p className="text-sm text-fitness-orange font-medium animate-fade-in">{motivationalMessage}</p>
+        </div>
+      )}
     </div>
   );
 };
