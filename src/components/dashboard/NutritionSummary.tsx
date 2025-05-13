@@ -29,21 +29,22 @@ const NutritionSummary: React.FC<NutritionSummaryProps> = ({ data }) => {
   const fatPercentage = (data.macros.fat.consumed / data.macros.fat.goal) * 100;
 
   // Calculate sizes based on mobile or desktop
-  const circleSize = isMobile ? "90px" : "130px";
+  const circleSize = isMobile ? "100px" : "130px";
   const cardPadding = isMobile ? "p-3" : "p-4";
   const macroPadding = isMobile ? "p-2" : "p-3";
   const macroGap = isMobile ? "gap-2" : "gap-3";
   const textSize = isMobile ? "text-lg" : "text-xl";
+  const verticalSpacing = isMobile ? "gap-3" : "gap-6";
   const macroTextSize = isMobile ? "text-xs" : "text-sm";
   const macroTitleSize = isMobile ? "text-[10px]" : "text-xs";
 
   return (
-    <Card className={`${cardPadding} h-full flex flex-col`}>
+    <Card className={`${cardPadding} h-full`}>
       <h3 className={`font-bold text-lg ${isMobile ? "mb-2" : "mb-3"}`}>Nutrição Diária</h3>
       
-      <div className={`flex flex-col ${isMobile ? "md:flex-row gap-3" : "md:flex-row gap-6"} flex-1`}>
+      <div className={`flex flex-col md:flex-row items-center justify-between ${verticalSpacing} h-[calc(100%-${isMobile ? "32px" : "40px"})]`}>
         {/* Circular Calories Progress */}
-        <div className="relative flex items-center justify-center" style={{ minWidth: circleSize, height: circleSize }}>
+        <div className="relative flex-shrink-0 mx-auto md:mx-0" style={{ width: circleSize, height: circleSize }}>
           <svg className="w-full h-full" viewBox="0 0 100 100">
             {/* Background circle */}
             <circle
@@ -88,7 +89,7 @@ const NutritionSummary: React.FC<NutritionSummaryProps> = ({ data }) => {
         </div>
         
         {/* Macros Grid */}
-        <div className={`grid grid-cols-3 ${macroGap} w-full self-center`}>
+        <div className={`grid grid-cols-3 ${macroGap} w-full`}>
           {/* Protein */}
           <div className={`rounded-lg bg-gradient-to-br from-white/5 to-white/10 dark:from-white/5 dark:to-transparent border border-border/50 ${macroPadding} shadow-sm`}>
             <div className={`${macroTitleSize} text-muted-foreground mb-0.5`}>Proteínas</div>
