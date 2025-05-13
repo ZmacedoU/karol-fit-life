@@ -92,8 +92,8 @@ const NutritionSummary: React.FC<NutritionSummaryProps> = ({ data }) => {
         <div className={`grid grid-cols-3 ${macroGap} w-full`}>
           {/* Protein */}
           <div className={`rounded-lg bg-gradient-to-br from-white/5 to-white/10 dark:from-white/5 dark:to-transparent border border-border/50 ${macroPadding} shadow-sm`}>
-            <div className={`${macroTitleSize} text-muted-foreground ${isMobile ? "mb-1" : "mb-2"}`}>Proteínas</div>
-            <div className={`font-medium ${macroTextSize} ${isMobile ? "mb-1" : "mb-2"}`}>
+            <div className={`${macroTitleSize} text-muted-foreground mb-0.5`}>Proteínas</div>
+            <div className={`font-medium ${macroTextSize} mb-0.5`}>
               {data.macros.protein.consumed}g
               <span className="text-xs text-muted-foreground"> / {data.macros.protein.goal}g</span>
             </div>
@@ -106,8 +106,8 @@ const NutritionSummary: React.FC<NutritionSummaryProps> = ({ data }) => {
           
           {/* Carbs */}
           <div className={`rounded-lg bg-gradient-to-br from-white/5 to-white/10 dark:from-white/5 dark:to-transparent border border-border/50 ${macroPadding} shadow-sm`}>
-            <div className={`${macroTitleSize} text-muted-foreground ${isMobile ? "mb-1" : "mb-2"}`}>Carboidratos</div>
-            <div className={`font-medium ${macroTextSize} ${isMobile ? "mb-1" : "mb-2"}`}>
+            <div className={`${macroTitleSize} text-muted-foreground mb-0.5`}>Carboidratos</div>
+            <div className={`font-medium ${macroTextSize} mb-0.5`}>
               {data.macros.carbs.consumed}g
               <span className="text-xs text-muted-foreground"> / {data.macros.carbs.goal}g</span>
             </div>
@@ -120,8 +120,8 @@ const NutritionSummary: React.FC<NutritionSummaryProps> = ({ data }) => {
           
           {/* Fat */}
           <div className={`rounded-lg bg-gradient-to-br from-white/5 to-white/10 dark:from-white/5 dark:to-transparent border border-border/50 ${macroPadding} shadow-sm`}>
-            <div className={`${macroTitleSize} text-muted-foreground ${isMobile ? "mb-1" : "mb-2"}`}>Gorduras</div>
-            <div className={`font-medium ${macroTextSize} ${isMobile ? "mb-1" : "mb-2"}`}>
+            <div className={`${macroTitleSize} text-muted-foreground mb-0.5`}>Gorduras</div>
+            <div className={`font-medium ${macroTextSize} mb-0.5`}>
               {data.macros.fat.consumed}g
               <span className="text-xs text-muted-foreground"> / {data.macros.fat.goal}g</span>
             </div>
