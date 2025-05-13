@@ -20,7 +20,6 @@ const WorkoutOfTheDay: React.FC = () => {
         <div className="flex justify-between items-end">
           <div>
             <h2 className="text-white text-xl font-bold">Membros Superiores</h2>
-            <p className="text-white/80 text-xs">Prof. Carlos Anselmo</p>
           </div>
           <button 
             className="bg-white text-fitness-darkPurple px-5 py-2 rounded-lg text-sm font-medium hover:bg-white/90 transition-colors"

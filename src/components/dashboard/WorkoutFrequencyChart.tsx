@@ -11,14 +11,10 @@ interface WorkoutFrequencyChartProps {
 }
 
 const WorkoutFrequencyChart: React.FC<WorkoutFrequencyChartProps> = ({ data }) => {
-  // Calculate how many days in the week have been completed (needed for progress bar)
-  const completedDays = data.filter(day => day.frequency > 0).length;
-  const totalDays = data.length;
-  const progress = Math.round((completedDays / totalDays) * 100);
-  
   return (
     <Card className="p-5">
-      <div className="grid grid-cols-7 gap-2 mb-3 animate-fade-in">
+      <h3 className="text-lg font-bold mb-3">Frequência Semanal</h3>
+      <div className="grid grid-cols-7 gap-2 animate-fade-in">
         {data.map((day, index) => (
           <div 
             key={day.day} 
@@ -41,13 +37,6 @@ const WorkoutFrequencyChart: React.FC<WorkoutFrequencyChartProps> = ({ data }) =
             <span className="text-xs font-medium">{day.day}</span>
           </div>
         ))}
-      </div>
-      
-      <div className="w-full bg-muted/30 h-1 rounded-full overflow-hidden">
-        <div 
-          className="bg-fitness-orange h-full rounded-full animate-scale-in transition-all duration-500" 
-          style={{ width: `${progress}%` }}
-        />
       </div>
     </Card>
   );
