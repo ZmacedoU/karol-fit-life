@@ -1,14 +1,21 @@
 
 import React from "react";
 import ThemeToggle from "@/components/navigation/ThemeToggle";
+import { Flame } from "lucide-react";
 
 interface ProfileHeaderProps {
   name: string;
   imageUrl: string;
   motivationalMessage?: string;
+  consecutiveDays?: number;
 }
 
-const ProfileHeader: React.FC<ProfileHeaderProps> = ({ name, imageUrl, motivationalMessage }) => {
+const ProfileHeader: React.FC<ProfileHeaderProps> = ({ 
+  name, 
+  imageUrl, 
+  motivationalMessage,
+  consecutiveDays = 5 // Default value for demonstration
+}) => {
   // Helper function for the greeting
   const getGreeting = () => {
     const hour = new Date().getHours();
@@ -49,12 +56,24 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({ name, imageUrl, motivatio
         </div>
       </div>
       
-      {/* Added motivational message centered below the profile info */}
-      {motivationalMessage && (
-        <div className="mt-4 text-center">
-          <p className="text-sm text-fitness-orange font-medium animate-fade-in">{motivationalMessage}</p>
-        </div>
-      )}
+      {/* Streak Counter + Motivational Message */}
+      <div className="mt-4">
+        {motivationalMessage && (
+          <div className="bg-[#1A1F2C] rounded-lg p-3 flex items-center gap-3 shadow-sm animate-fade-in">
+            <div className="bg-gradient-to-br from-fitness-orange to-fitness-darkOrange h-8 w-8 rounded-full flex items-center justify-center">
+              <Flame className="h-5 w-5 text-white" />
+            </div>
+            <div>
+              {consecutiveDays > 0 && (
+                <p className="text-sm text-white">Você está há {consecutiveDays} dias sem faltar no treino</p>
+              )}
+              {!consecutiveDays && motivationalMessage && (
+                <p className="text-sm text-white">{motivationalMessage}</p>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

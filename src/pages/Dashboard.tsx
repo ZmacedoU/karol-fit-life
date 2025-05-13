@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import BottomNav from "@/components/navigation/BottomNav";
 import NutritionSummary from "@/components/dashboard/NutritionSummary";
@@ -23,6 +24,13 @@ const getMotivationalMessage = (data: Array<{ day: string; frequency: number }>)
   if (completedDays >= 4) return "Estamos quase completando a semana de treino, não desista agora!";
   
   return "Mantenha a consistência, cada treino conta!";
+};
+
+// Helper function to calculate consecutive workout days
+const getConsecutiveDays = (data: Array<{ day: string; frequency: number }>) => {
+  // For demonstration purposes, we're returning 5
+  // In a real app, this would calculate the actual streak based on historical data
+  return 5;
 };
 
 const Dashboard: React.FC = () => {
@@ -54,6 +62,9 @@ const Dashboard: React.FC = () => {
 
   // Get the motivational message for the user
   const motivationalMessage = getMotivationalMessage(workoutFrequencyData);
+  
+  // Get consecutive days
+  const consecutiveDays = getConsecutiveDays(workoutFrequencyData);
 
   return (
     <div className="pb-20 dark:bg-background min-h-screen relative">
@@ -62,6 +73,7 @@ const Dashboard: React.FC = () => {
         name="Nathan"
         imageUrl="https://randomuser.me/api/portraits/men/32.jpg"
         motivationalMessage={motivationalMessage}
+        consecutiveDays={consecutiveDays}
       />
 
       {/* Main Content - Two Column Grid Layout */}
