@@ -8,7 +8,7 @@ const WorkoutOfTheDay: React.FC = () => {
   
   return (
     <div className="rounded-2xl overflow-hidden shadow-md relative h-full">
-      <div className="absolute inset-0 bg-gradient-to-br from-fitness-purple to-fitness-darkPurple"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-fitness-orange to-fitness-darkOrange"></div>
       <div className="absolute inset-0 flex flex-col justify-between p-5">
         <div className="flex items-center gap-2">
           <div className="bg-white/20 p-1.5 rounded-lg">
@@ -22,7 +22,7 @@ const WorkoutOfTheDay: React.FC = () => {
             <h2 className="text-white text-xl font-bold">Membros Superiores</h2>
           </div>
           <button 
-            className="bg-white text-fitness-darkPurple px-5 py-2 rounded-lg text-sm font-medium hover:bg-white/90 transition-colors"
+            className="bg-white text-fitness-darkOrange px-5 py-2 rounded-lg text-sm font-medium hover:bg-white/90 transition-colors"
             onClick={() => navigate('/workout')}
           >
             Iniciar
