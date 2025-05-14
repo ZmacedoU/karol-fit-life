@@ -1,12 +1,11 @@
 
 import React, { useState } from "react";
-import { Search, Calendar, Dumbbell, Clock, ChevronRight, PlusCircle } from "lucide-react";
+import { Search, Calendar, Dumbbell, ChevronRight } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { Progress } from "@/components/ui/progress";
 import BottomNav from "@/components/navigation/BottomNav";
 
 const Workout: React.FC = () => {
@@ -18,7 +17,6 @@ const Workout: React.FC = () => {
       title: "Treino A - Superiores",
       completed: false,
       progress: 0,
-      duration: "45-60 min",
       exercises: [
         { name: "Supino reto", sets: "4 séries", reps: "12 reps", completed: false },
         { name: "Remada curvada", sets: "4 séries", reps: "10-12 reps", completed: false },
@@ -32,7 +30,6 @@ const Workout: React.FC = () => {
       title: "Treino B - Inferiores",
       completed: false,
       progress: 0,
-      duration: "50-65 min",
       exercises: [
         { name: "Agachamento livre", sets: "4 séries", reps: "12 reps", completed: false },
         { name: "Leg Press 45°", sets: "4 séries", reps: "12 reps", completed: false },
@@ -46,7 +43,6 @@ const Workout: React.FC = () => {
       title: "Treino C - Completo",
       completed: false,
       progress: 0,
-      duration: "55-70 min",
       exercises: [
         { name: "Supino inclinado", sets: "3 séries", reps: "12 reps", completed: false },
         { name: "Puxada frontal", sets: "3 séries", reps: "12 reps", completed: false },
@@ -71,7 +67,7 @@ const Workout: React.FC = () => {
           <div className="bg-white/10 backdrop-blur-md rounded-full p-1 flex items-center">
             <Search className="ml-3 h-4 w-4 text-white/70" />
             <Input 
-              placeholder="Buscar exercícios" 
+              placeholder="Buscar treino" 
               className="border-none bg-transparent text-white placeholder:text-white/60 pl-2 focus-visible:ring-0 focus-visible:ring-offset-0"
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
@@ -111,9 +107,6 @@ const Workout: React.FC = () => {
                       <div className="flex items-center justify-between">
                         <span className="bg-white/20 text-white text-xs font-medium px-2.5 py-1 rounded-full">
                           {todayWorkout.day}
-                        </span>
-                        <span className="bg-white/20 text-white text-xs font-medium px-2.5 py-1 rounded-full flex items-center">
-                          <Clock className="h-3 w-3 mr-1" /> {todayWorkout.duration}
                         </span>
                       </div>
                       <div>
@@ -164,7 +157,7 @@ const Workout: React.FC = () => {
                         
                         {group.exercises.length > 3 && (
                           <div className="text-sm text-fitness-purple flex items-center">
-                            <PlusCircle className="h-3 w-3 mr-1" />
+                            <div className="h-1.5 w-1.5 bg-fitness-purple/60 rounded-full mr-2"></div>
                             {group.exercises.length - 3} mais exercícios
                           </div>
                         )}
@@ -175,21 +168,8 @@ const Workout: React.FC = () => {
                       <ChevronRight className="h-5 w-5" />
                     </Button>
                   </div>
-                  
-                  <div className="mt-4">
-                    <div className="flex items-center justify-between text-xs mb-1.5">
-                      <span className="text-muted-foreground">Progresso</span>
-                      <span className="font-medium">{group.progress}%</span>
-                    </div>
-                    <Progress value={group.progress} className="h-1.5" indicatorClassName="bg-fitness-purple" />
-                  </div>
                 </Card>
               ))}
-              
-              <Button className="w-full bg-fitness-purple hover:bg-fitness-purple/90 text-white mt-4 rounded-xl h-12">
-                <PlusCircle className="h-4 w-4 mr-2" />
-                Adicionar novo treino
-              </Button>
             </div>
           </TabsContent>
           
