@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -79,7 +80,8 @@ export default {
 					chart4: '#FB923C',
 					accent1: '#EA580C',
 					accent2: '#C2410C',
-					purple: '#9b87f5',  // Adding purple for reference
+					purple: '#9b87f5',
+					darkPurple: '#7E69AB',
 				},
 			},
 			borderRadius: {
