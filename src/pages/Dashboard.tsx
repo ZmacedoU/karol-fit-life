@@ -1,13 +1,9 @@
-
-import React, { useState } from "react";
+import React from "react";
 import BottomNav from "@/components/navigation/BottomNav";
 import NutritionSummary from "@/components/dashboard/NutritionSummary";
 import WorkoutFrequencyChart from "@/components/dashboard/WorkoutFrequencyChart";
 import ProfileHeader from "@/components/dashboard/ProfileHeader";
 import WorkoutOfTheDay from "@/components/dashboard/WorkoutOfTheDay";
-import { Droplet } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import WaterConsumptionDialog from "@/components/dashboard/WaterConsumptionDialog";
 
 // Helper function to generate motivational message based on workout data
 const getMotivationalMessage = (data: Array<{ day: string; frequency: number }>) => {
@@ -34,8 +30,6 @@ const getConsecutiveDays = (data: Array<{ day: string; frequency: number }>) => 
 };
 
 const Dashboard: React.FC = () => {
-  const [isWaterDialogOpen, setIsWaterDialogOpen] = useState(false);
-  
   // Sample nutrition data
   const nutritionData = {
     calories: {
@@ -96,23 +90,6 @@ const Dashboard: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* Water Consumption Floating Button */}
-      <div className="fixed bottom-20 left-1/2 transform -translate-x-1/2 z-20">
-        <Button 
-          onClick={() => setIsWaterDialogOpen(true)}
-          className="h-14 w-14 rounded-full shadow-lg bg-blue-500 hover:bg-blue-600"
-          aria-label="Registro de água"
-        >
-          <Droplet className="h-6 w-6" />
-        </Button>
-      </div>
-
-      {/* Water Consumption Dialog */}
-      <WaterConsumptionDialog 
-        open={isWaterDialogOpen} 
-        onOpenChange={setIsWaterDialogOpen} 
-      />
 
       <BottomNav />
     </div>
