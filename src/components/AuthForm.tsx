@@ -1,11 +1,9 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Eye, EyeOff, Lock, Mail } from "lucide-react";
 import { motion } from "framer-motion";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 interface AuthFormProps {
   showRegister?: boolean;
@@ -90,7 +88,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ showRegister = true, customClass = 
               <TabsContent value="register" className="space-y-4">
                 <div className="space-y-2">
                   <div className="relative">
-                    <Mail className="absolute left-3 top-3 h-4 w-4 text-white/70" />
+                    <User className="absolute left-3 top-3 h-4 w-4 text-white/70" />
                     <Input 
                       placeholder="Nome completo" 
                       className="pl-10 fitness-input bg-white/10 text-white border-white/20 focus:border-fitness-orange" 
