@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap');
 
@@ -120,7 +121,6 @@
     @apply bg-gradient-to-br from-white via-white/90 to-white/70 bg-clip-text text-transparent;
   }
   
-  /* Custom card styles for Pacto Treino look */
   .pacto-card {
     @apply bg-white rounded-2xl shadow-md overflow-hidden;
   }
@@ -159,6 +159,19 @@
   .wine-theme .input {
     @apply wine-input;
   }
+  
+  /* Novos estilos para o tema roxo */
+  .purple-input {
+    @apply w-full px-4 py-5 rounded-xl border border-white/30 bg-transparent focus:border-white/50 focus:ring-1 focus:ring-white/20 focus:outline-none transition-all text-white placeholder:text-white/70;
+  }
+  
+  .purple-theme .card {
+    @apply border-0 bg-transparent;
+  }
+  
+  .purple-theme .input {
+    @apply purple-input;
+  }
 }
 
 /* Animation delay utilities */
@@ -172,4 +185,10 @@
 
 .animation-delay-500 {
   animation-delay: 500ms;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }

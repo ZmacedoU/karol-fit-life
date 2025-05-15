@@ -4,6 +4,6 @@ import App from './App.tsx'
 import './index.css'
 
 // Set the document title
-document.title = "Karol Personal | Acesso";
+document.title = "Login - Karol Personal";
 
 createRoot(document.getElementById("root")!).render(<App />);

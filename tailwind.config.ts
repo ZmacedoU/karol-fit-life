@@ -95,6 +95,12 @@ export default {
 					accent: '#D25F8A',
 					muted: '#E6A5B9',
 				},
+				purple: {
+					primary: '#6C4AB6', // Cor roxa principal para o fundo
+					light: '#8D72E1',
+					dark: '#4E3986',
+					accent: '#B9A0FF',
+				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
