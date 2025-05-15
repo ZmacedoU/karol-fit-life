@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 const Index: React.FC = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-purple-primary relative">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-purple-primary to-black relative">
       <div className="absolute top-4 left-4 md:top-8 md:left-8">
         <Button variant="ghost" className="text-white p-2 rounded-full">
           <ArrowLeft className="h-6 w-6" />
@@ -22,7 +22,7 @@ const Index: React.FC = () => {
       >
         <div className="mb-8 text-center">
           <img 
-            src="/lovable-uploads/e0fd001c-0828-4e6a-ab50-c214de822f44.png" 
+            src="/lovable-uploads/2c1e5507-507b-47c8-a3ae-35e5337dde8a.png" 
             alt="Karol Personal" 
             className="h-32 w-auto mx-auto mb-4 object-contain"
           />

@@ -30,7 +30,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ showRegister = true, customClass = 
               <User className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-white/80" />
               <Input 
                 placeholder="Username or Email" 
-                className="purple-input pl-12" 
+                className="purple-input glass-input pl-12" 
                 type="email"
                 autoComplete="email"
               />
@@ -40,7 +40,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ showRegister = true, customClass = 
               <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-white/80" />
               <Input 
                 placeholder="Password" 
-                className="purple-input pl-12 pr-12" 
+                className="purple-input glass-input pl-12 pr-12" 
                 type={showPassword ? "text" : "password"}
                 autoComplete="current-password"
               />
@@ -73,11 +73,6 @@ const AuthForm: React.FC<AuthFormProps> = ({ showRegister = true, customClass = 
           >
             Login
           </Button>
-          
-          <div className="text-center text-white">
-            <span className="text-white/80">Don't have an account?</span>{" "}
-            <a href="#" className="text-white font-medium hover:underline">Sign Up</a>
-          </div>
         </motion.div>
       </CardContent>
       <CardFooter className="p-0 mt-6">
