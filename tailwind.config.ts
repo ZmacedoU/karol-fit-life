@@ -82,6 +82,11 @@ export default {
 					accent2: '#C2410C',
 					purple: '#9b87f5',
 					darkPurple: '#7E69AB',
+					primaryPurple: '#9b87f5',
+					secondaryPurple: '#7E69AB',
+					lightPurple: '#D6BCFA',
+					softPurple: '#E5DEFF',
+					vividPurple: '#8B5CF6',
 				},
 			},
 			borderRadius: {
