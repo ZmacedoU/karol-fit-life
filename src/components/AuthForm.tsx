@@ -1,10 +1,12 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Eye, EyeOff, Lock, User } from "lucide-react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 interface AuthFormProps {
   showRegister?: boolean;
@@ -12,9 +14,23 @@ interface AuthFormProps {
 }
 
 const AuthForm: React.FC<AuthFormProps> = ({ showRegister = true, customClass = "" }) => {
-  const [showPassword, setShowPassword] = React.useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
+
+  const handleLogin = () => {
+    if (username === "1" && password === "1") {
+      toast.success("Bem-vindo, Professor!");
+      navigate("/professor");
+    } else {
+      // Regular user login would go to dashboard
+      toast.success("Login bem-sucedido!");
+      navigate("/dashboard");
+    }
+  };
 
   return (
     <Card className={`w-full bg-transparent border-0 shadow-none ${customClass}`}>
@@ -31,8 +47,10 @@ const AuthForm: React.FC<AuthFormProps> = ({ showRegister = true, customClass = 
               <Input 
                 placeholder="Username or Email" 
                 className="purple-input glass-input pl-12" 
-                type="email"
-                autoComplete="email"
+                type="text"
+                autoComplete="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
               />
             </div>
             
@@ -43,6 +61,8 @@ const AuthForm: React.FC<AuthFormProps> = ({ showRegister = true, customClass = 
                 className="purple-input glass-input pl-12 pr-12" 
                 type={showPassword ? "text" : "password"}
                 autoComplete="current-password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <button 
                 type="button" 
@@ -69,7 +89,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ showRegister = true, customClass = 
           
           <Button 
             className="w-full bg-white text-purple-primary hover:bg-white/90 font-bold text-lg py-6 uppercase"
-            onClick={() => window.location.href = "/dashboard"}
+            onClick={handleLogin}
           >
             Login
           </Button>
