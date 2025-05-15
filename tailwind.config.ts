@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -21,6 +20,7 @@ export default {
 		extend: {
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
+				serif: ['Playfair Display', 'serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -88,6 +88,13 @@ export default {
 					softPurple: '#E5DEFF',
 					vividPurple: '#8B5CF6',
 				},
+				wine: {
+					deep: '#2D0A14',
+					medium: '#5A1132',
+					light: '#8C2C4F',
+					accent: '#D25F8A',
+					muted: '#E6A5B9',
+				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -130,13 +137,29 @@ export default {
 						transform: 'scale(1)',
 						opacity: '1'
 					}
-				}
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' },
+				},
+				'pulse-subtle': {
+					'0%, 100%': { opacity: '0.6' },
+					'50%': { opacity: '1' },
+				},
+				'gradient-shift': {
+					'0%': { backgroundPosition: '0% 50%' },
+					'50%': { backgroundPosition: '100% 50%' },
+					'100%': { backgroundPosition: '0% 50%' },
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.3s ease-out',
-				'scale-in': 'scale-in 0.2s ease-out'
+				'scale-in': 'scale-in 0.2s ease-out',
+				'float': 'float 3s ease-in-out infinite',
+				'pulse-subtle': 'pulse-subtle 3s ease-in-out infinite',
+				'gradient-shift': 'gradient-shift 3s ease-in-out infinite',
 			}
 		}
 	},
