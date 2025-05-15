@@ -19,20 +19,31 @@ const Index: React.FC = () => {
   }, []);
   
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-wine-deep via-wine-medium to-wine-light relative overflow-hidden">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#421C52] via-[#642C79] to-[#853B92] relative overflow-hidden">
       {/* Animated particles */}
       <div className="absolute inset-0 z-0">
-        {Array.from({ length: 20 }).map((_, index) => (
-          <div
+        {Array.from({ length: 30 }).map((_, index) => (
+          <motion.div
             key={index}
             className="absolute rounded-full bg-white/5"
+            initial={{ 
+              x: Math.random() * 100 + "%",
+              y: Math.random() * 100 + "%",
+              scale: Math.random() * 0.5 + 0.5
+            }}
+            animate={{ 
+              y: [`${Math.random() * 100}%`, `${Math.random() * 100}%`],
+              x: [`${Math.random() * 100}%`, `${Math.random() * 100}%`],
+            }}
+            transition={{ 
+              repeat: Infinity, 
+              repeatType: "reverse", 
+              duration: Math.random() * 20 + 10,
+              ease: "easeInOut"
+            }}
             style={{
-              width: Math.random() * 8 + 4 + "px",
-              height: Math.random() * 8 + 4 + "px",
-              left: Math.random() * 100 + "%",
-              top: Math.random() * 100 + "%",
-              animation: `float ${Math.random() * 10 + 15}s infinite ease-in-out`,
-              animationDelay: `${Math.random() * 5}s`,
+              width: Math.random() * 10 + 5 + "px",
+              height: Math.random() * 10 + 5 + "px",
             }}
           />
         ))}
@@ -40,9 +51,37 @@ const Index: React.FC = () => {
       
       {/* Gradient spotlight effect that follows mouse */}
       <div 
-        className="absolute inset-0 bg-radial-gradient opacity-20 z-0"
+        className="absolute inset-0 bg-radial-gradient opacity-30 z-0"
         style={{ 
           background: `radial-gradient(circle at ${mousePosition.x * 100}% ${mousePosition.y * 100}%, rgba(255,255,255,0.15) 0%, transparent 50%)`,
+        }}
+      />
+
+      {/* Background circles */}
+      <motion.div 
+        className="absolute top-1/4 -left-32 w-64 h-64 rounded-full bg-[#5D1E6F]/40 blur-3xl"
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.4, 0.6, 0.4],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          repeatType: "reverse"
+        }}
+      />
+
+      <motion.div 
+        className="absolute bottom-1/4 -right-32 w-80 h-80 rounded-full bg-[#9A2B6E]/30 blur-3xl"
+        animate={{
+          scale: [1, 1.3, 1],
+          opacity: [0.3, 0.5, 0.3],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          repeatType: "reverse",
+          delay: 1
         }}
       />
       
@@ -50,7 +89,7 @@ const Index: React.FC = () => {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="z-10"
+        className="z-10 flex flex-col items-center"
       >
         <div className="mb-8 text-center">
           <motion.div 
@@ -65,8 +104,8 @@ const Index: React.FC = () => {
             }}
           >
             <img 
-              src="/lovable-uploads/e0fd001c-0828-4e6a-ab50-c214de822f44.png" 
-              alt="Karol Personal" 
+              src="/lovable-uploads/426c5dc9-698e-47e0-abb8-bc883d3c9fe3.png" 
+              alt="Karoline Personal" 
               className="h-full w-auto object-contain filter drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
             />
           </motion.div>
@@ -87,7 +126,7 @@ const Index: React.FC = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 1 }}
-          className="mt-8 text-center text-wine-light/70 text-sm"
+          className="mt-8 text-center text-white/50 text-sm"
         >
           Direitos autorais Karoline Personal © {new Date().getFullYear()}
         </motion.div>

@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap');
 
@@ -147,7 +148,7 @@
   }
   
   .wine-button {
-    @apply bg-gradient-to-r from-wine-medium to-wine-light hover:from-wine-light hover:to-wine-accent text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg;
+    @apply bg-gradient-to-r from-wine-purple to-wine-magenta hover:from-wine-magenta hover:to-wine-lightPurple text-white font-medium py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg;
     background-size: 200% auto;
     animation: gradient-shift 3s ease infinite;
   }
