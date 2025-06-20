@@ -11,6 +11,7 @@ import Workout from "./pages/Workout";
 import Diet from "./pages/Diet";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
+import ProfessorDashboard from "./pages/ProfessorDashboard";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const App = () => (
             <Route path="/workout" element={<Workout />} />
             <Route path="/diet" element={<Diet />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/professor" element={<ProfessorDashboard />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
