@@ -64,7 +64,12 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
               <Flame className="h-5 w-5 text-white" />
             </div>
             <div>
-              <p className="text-sm text-white">A hora do pesadelo é agora e sorriso depois</p>
+              {consecutiveDays > 0 && (
+                <p className="text-sm text-white">Você está há {consecutiveDays} dias sem faltar no treino</p>
+              )}
+              {!consecutiveDays && motivationalMessage && (
+                <p className="text-sm text-white">{motivationalMessage}</p>
+              )}
             </div>
           </div>
         )}
